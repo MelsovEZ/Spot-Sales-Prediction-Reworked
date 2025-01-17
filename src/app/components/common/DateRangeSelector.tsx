@@ -17,7 +17,7 @@ export default function DateRangeSelector({
 }: DateRangeSelectorProps) {
   return (
     <Select value={value} onValueChange={onChange}>
-      <SelectTrigger className="bg-gray-50 text-black font-medium hover:bg-gray-300 transition-colors">
+      <SelectTrigger className="bg-gray-50 md:max-w-[315px] text-black font-medium hover:bg-gray-300 transition-colors">
         <SelectValue placeholder="Select date range" />
       </SelectTrigger>
       <SelectContent>

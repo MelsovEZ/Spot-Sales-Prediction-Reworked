@@ -95,7 +95,7 @@ export default function PredictionDashboard({
         <div className="container mx-auto p-4">
           <div className="flex flex-col space-y-4">
             {/* Top Controls */}
-            <div className="flex items-center gap-4">
+            <div className="flex items-center gap-4 md:justify-end">
               <DateRangeSelector value={dateRange} onChange={setDateRange} />
               <Button
                 onClick={fetchPredictions}
