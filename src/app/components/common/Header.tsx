@@ -13,7 +13,7 @@ export default function Header({ onAreaChange }: HeaderProps) {
         <div className="flex items-center gap-2">
           <Image src="/logo.svg" alt="logo" width={50} height={50} />
           <h1 className="text-black bg-clip-text text-xl sm:text-2xl font-bold text-center">
-            I'm Order Management System
+            Order Management System
           </h1>
         </div>
         <div className="flex flex-col sm:flex-row sm:space-y-0 sm:space-x-2 space-y-2">
