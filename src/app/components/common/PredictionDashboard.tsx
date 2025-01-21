@@ -140,7 +140,7 @@ export default function PredictionDashboard({
                 </TabsTrigger>
                 <TabsTrigger
                   value="staff"
-                  className="data-[state=active]:bg-[#ff8686] data-[state=active]:text-white"
+                  className="data-[state=active]:bg-[#AD3205] data-[state=active]:text-white"
                 >
                   Staff
                 </TabsTrigger>
@@ -205,3 +205,4 @@ export default function PredictionDashboard({
     </div>
   )
 }
+
