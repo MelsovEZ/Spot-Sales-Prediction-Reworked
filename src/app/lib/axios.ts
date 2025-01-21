@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 const baseURL = process.env.NODE_ENV === 'production' 
-  ? 'https://spot-sales-prediction-production.up.railway.app'
+  ? 'https://spot-sales-prediction-1.onrender.com'
   : 'http://localhost:8000'
 
 const api = axios.create({
