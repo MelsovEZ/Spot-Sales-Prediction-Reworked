@@ -29,45 +29,42 @@ export default function PredictionDashboard({
   const [loading, setLoading] = useState<boolean>(false)
 
   const hourlyData = [
-    { hour: '6AM', orders: 12 },
-    { hour: '7AM', orders: 15 },
-    { hour: '8AM', orders: 25 },
-    { hour: '9AM', orders: 35 },
-    { hour: '10AM', orders: 42 },
-    { hour: '11AM', orders: 55 },
-    { hour: '12PM', orders: 70 },
-    { hour: '1PM', orders: 65 },
-    { hour: '2PM', orders: 45 },
-    { hour: '3PM', orders: 35 },
-    { hour: '4PM', orders: 30 },
-    { hour: '5PM', orders: 45 },
-    { hour: '6PM', orders: 55 },
-    { hour: '7PM', orders: 65 },
-    { hour: '8PM', orders: 60 },
-    { hour: '9PM', orders: 45 },
-    { hour: '10PM', orders: 30 },
-    { hour: '11PM', orders: 20 },
+    { hour: '09:00', orders: 35 },
+    { hour: '10:00', orders: 42 },
+    { hour: '11:00', orders: 55 },
+    { hour: '12:00', orders: 70 },
+    { hour: '13:00', orders: 65 },
+    { hour: '14:00', orders: 45 },
+    { hour: '13:00', orders: 35 },
+    { hour: '14:00', orders: 30 },
+    { hour: '15:00', orders: 45 },
+    { hour: '16:00', orders: 55 },
+    { hour: '17:00', orders: 65 },
+    { hour: '18:00', orders: 60 },
+    { hour: '19:00', orders: 45 },
+    { hour: '20:00', orders: 30 },
+    { hour: '21:00', orders: 20 },
   ]
 
   const dailyOrders = [
-    { date: '18 January', amount: '3717287 ₸' },
-    { date: '19 January', amount: '4152093 ₸', isSelected: true },
-    { date: '20 January', amount: '5034716 ₸' },
-    { date: '21 January', amount: '6707382 ₸' },
-    { date: '22 January', amount: '703000 ₸' },
-    { date: '23 January', amount: '3717287 ₸' },
-    { date: '24 January', amount: '4152093 ₸' },
-    { date: '25 January', amount: '5034716 ₸' },
-    { date: '26 January', amount: '6707382 ₸' },
-    { date: '27 January', amount: '703000 ₸' },
-    { date: '28 January', amount: '3717287 ₸' },
-    { date: '29 January', amount: '4152093 ₸' },
-    { date: '30 January', amount: '5034716 ₸' },
-    { date: '31 January', amount: '6707382 ₸' },
-    { date: '1 February', amount: '703000 ₸' },
-    { date: '2 February', amount: '3717287 ₸' },
-    { date: '3 February', amount: '4152093 ₸' },
-    { date: '4 February', amount: '5034716 ₸' },
+    { date: '18 Января', amount: '3717287 ₸' },
+    { date: '19 Января', amount: '4152093 ₸', isSelected: true },
+    { date: '20 Января', amount: '5034716 ₸' },
+    { date: '21 Января', amount: '6707382 ₸' },
+    { date: '22 Января', amount: '703000 ₸' },
+    { date: '23 Января', amount: '3717287 ₸' },
+    { date: '24 Января', amount: '4152093 ₸' },
+    { date: '25 Января', amount: '5034716 ₸' },
+    { date: '26 Января', amount: '6707382 ₸' },
+    { date: '27 Января', amount: '703000 ₸' },
+    { date: '28 Января', amount: '3717287 ₸' },
+    { date: '29 Января', amount: '4152093 ₸' },
+    { date: '30 Января', amount: '5034716 ₸' },
+    { date: '31 Января', amount: '6707382 ₸' },
+    { date: '1 Февраля', amount: '703000 ₸' },
+    { date: '2 Февраля', amount: '3717287 ₸' },
+    { date: '3 Февраля', amount: '4152093 ₸' },
+    { date: '4 Февраля', amount: '5034716 ₸' },
   ]
 
   const fetchPredictions = async () => {
@@ -104,7 +101,7 @@ export default function PredictionDashboard({
                 disabled={loading}
                 className="bg-[#4CAF50] hover:bg-[#45a049]"
               >
-                {loading ? 'Loading' : 'Refresh'}
+                {loading ? 'Загрузка...' : 'Обновить'}
               </Button>
             </div>
           </div>
@@ -120,7 +117,7 @@ export default function PredictionDashboard({
           <div className="container mx-auto p-4">
             {lastUpdated && (
               <p className="mb-4 text-sm text-gray-600">
-                Last updated: {lastUpdated.toLocaleString()}
+                Последнее обновление: {lastUpdated.toLocaleString()}
               </p>
             )}
 
@@ -130,19 +127,19 @@ export default function PredictionDashboard({
                   value="overview"
                   className="data-[state=active]:bg-[#4CAF50] data-[state=active]:text-white"
                 >
-                  Overview
+                  Общее
                 </TabsTrigger>
                 <TabsTrigger
                   value="inventory"
                   className="data-[state=active]:bg-[#F2CB0A] data-[state=active]:text-white"
                 >
-                  Inventory
+                  Склад
                 </TabsTrigger>
                 <TabsTrigger
                   value="staff"
                   className="data-[state=active]:bg-[#AD3205] data-[state=active]:text-white"
                 >
-                  Staff
+                  Сотрудники
                 </TabsTrigger>
               </TabsList>
 
@@ -150,8 +147,8 @@ export default function PredictionDashboard({
                 <div className="grid grid-cols-12 gap-6">
                   <div className="col-span-12 ">
                     <OrderHeader
-                      currentDate="18 January"
-                      orderType="Top Item: Big Mac"
+                      currentDate="21 Января"
+                      orderType="Топ комбо: Combo Big Burger"
                       orderDetails="27270208"
                       dineInCode="T058Y050"
                       dailyOrders={dailyOrders}

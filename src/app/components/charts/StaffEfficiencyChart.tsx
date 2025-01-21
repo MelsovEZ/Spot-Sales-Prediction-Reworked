@@ -13,17 +13,17 @@ import {
 } from 'recharts'
 
 const data = [
-  { shift: 'Morning', efficiency: 94, sales: 2100, labor: 420 },
-  { shift: 'Afternoon', efficiency: 87, sales: 1800, labor: 450 },
-  { shift: 'Evening', efficiency: 92, sales: 2400, labor: 480 },
-  { shift: 'Night', efficiency: 78, sales: 1200, labor: 360 },
+  { shift: 'Утро', efficiency: 94, sales: 2100, labor: 420 },
+  { shift: 'Обед', efficiency: 87, sales: 1800, labor: 450 },
+  { shift: 'Вечер', efficiency: 92, sales: 2400, labor: 480 },
+  { shift: 'Ночь', efficiency: 78, sales: 1200, labor: 360 },
 ]
 
 export default function StaffEfficiencyChart() {
   return (
     <Card className="bg-white/5 border-gray-200 backdrop-blur-sm">
       <CardHeader>
-        <CardTitle>Staff Efficiency by Shift</CardTitle>
+        <CardTitle>Эффективность работы персонала по сменам</CardTitle>
       </CardHeader>
       <CardContent>
         <ResponsiveContainer width="100%" height={300}>
@@ -45,11 +45,18 @@ export default function StaffEfficiencyChart() {
                 borderRadius: '8px',
                 color: 'white',
               }}
+              formatter={(value: number, name: string) =>
+                name === 'Эффективность %' ? `${value}%` : value
+              }
             />
             <Legend formatter={(value) => <span>{value}</span>} />
-            <Bar dataKey="efficiency" fill="#F2CB0A" name="Efficiency %" />
-            <Bar dataKey="sales" fill="#4CAF50" name="Sales ($)" />
-            <Bar dataKey="labor" fill="#AD3205" name="Labor Cost ($)" />
+            <Bar dataKey="efficiency" fill="#F2CB0A" name="Эффективность %" />
+            <Bar dataKey="sales" fill="#4CAF50" name="Продажи ($)" />
+            <Bar
+              dataKey="labor"
+              fill="#AD3205"
+              name="Стоимость рабочей силы ($)"
+            />
           </BarChart>
         </ResponsiveContainer>
       </CardContent>

@@ -20,14 +20,26 @@ interface CategoryAnalysisProps {
   }>
 }
 
+const categoryMap: Record<string, string> = {
+  Drinks: 'Напитки',
+  Sides: 'Закуски',
+  Desserts: 'Десерты',
+  Burgers: 'Бургеры',
+}
+
 export default function CategoryAnalysis({ data }: CategoryAnalysisProps) {
   const categoryData = data.reduce(
     (acc, item) => {
-      if (!acc[item.Category]) {
-        acc[item.Category] = { Category: item.Category, Takeaway: 0, Dining: 0 }
+      const localizedCategory = categoryMap[item.Category] || item.Category
+      if (!acc[localizedCategory]) {
+        acc[localizedCategory] = {
+          Category: localizedCategory,
+          Takeaway: 0,
+          Dining: 0,
+        }
       }
-      const orderType = item.Type_of_Order as 'Takeaway' | 'Dining'
-      acc[item.Category][orderType] += item.Predicted_Orders
+      const orderType = item.Type_of_Order
+      acc[localizedCategory][orderType] += item.Predicted_Orders
       return acc
     },
     {} as Record<string, { Category: string; Takeaway: number; Dining: number }>
@@ -38,7 +50,7 @@ export default function CategoryAnalysis({ data }: CategoryAnalysisProps) {
   return (
     <Card className="bg-white/5 border-gray-200 backdrop-blur-sm h-full">
       <CardHeader>
-        <CardTitle>Category-wise Analysis</CardTitle>
+        <CardTitle>Анализ по категориям</CardTitle>
       </CardHeader>
       <CardContent>
         <ResponsiveContainer width="100%" height={300}>
@@ -62,8 +74,8 @@ export default function CategoryAnalysis({ data }: CategoryAnalysisProps) {
               }}
             />
             <Legend formatter={(value) => <span>{value}</span>} />
-            <Bar dataKey="Takeaway" fill="#F2CB0A" />
-            <Bar dataKey="Dining" fill="#4CAF50" />
+            <Bar name="На вынос" dataKey="Takeaway" fill="#F2CB0A" />
+            <Bar name="В зале" dataKey="Dining" fill="#4CAF50" />
           </BarChart>
         </ResponsiveContainer>
       </CardContent>

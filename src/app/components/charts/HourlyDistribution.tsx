@@ -24,7 +24,7 @@ export default function HourlyDistribution({ data }: HourlyDistributionProps) {
   return (
     <Card className="bg-white/5 border-gray-200 backdrop-blur-sm">
       <CardHeader className="flex flex-row items-center justify-between">
-        <CardTitle>Hourly Distribution</CardTitle>
+        <CardTitle>Распределение по часам</CardTitle>
         <div className="flex items-center space-x-2">
           <Button
             variant="ghost"
@@ -76,7 +76,12 @@ export default function HourlyDistribution({ data }: HourlyDistributionProps) {
               }}
               cursor={{ fill: 'rgba(255,255,255,0.1)' }}
             />
-            <Bar dataKey="orders" fill="#4CAF50" radius={[4, 4, 0, 0]} />
+            <Bar
+              dataKey="orders"
+              name="Заказы"
+              fill="#4CAF50"
+              radius={[4, 4, 0, 0]}
+            />
           </BarChart>
         </ResponsiveContainer>
       </CardContent>

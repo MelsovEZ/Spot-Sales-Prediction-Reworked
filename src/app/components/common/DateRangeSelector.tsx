@@ -21,10 +21,10 @@ export default function DateRangeSelector({
         <SelectValue placeholder="Select date range" />
       </SelectTrigger>
       <SelectContent>
-        <SelectItem value="1d">1 Day</SelectItem>
-        <SelectItem value="1w">1 Week</SelectItem>
-        <SelectItem value="2w">2 Weeks</SelectItem>
-        <SelectItem value="1m">1 Month</SelectItem>
+        <SelectItem value="1d">1 День</SelectItem>
+        <SelectItem value="1w">1 неделя</SelectItem>
+        <SelectItem value="2w">2 Недели</SelectItem>
+        <SelectItem value="1m">1 Месяц</SelectItem>
       </SelectContent>
     </Select>
   )

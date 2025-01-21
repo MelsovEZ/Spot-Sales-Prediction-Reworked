@@ -4,17 +4,17 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Progress } from '@/components/ui/progress'
 
 const stockLevels = [
-  { item: 'Burger Buns', current: 140, required: 200, urgent: true },
-  { item: 'Beef Patties', current: 155, required: 200, urgent: true },
-  { item: 'Lettuce', current: 45, required: 50, urgent: false },
-  { item: 'Cheese Slices', current: 180, required: 200, urgent: false },
+  { item: 'Бургерные Булочки', current: 140, required: 200, urgent: true },
+  { item: 'Котлеты', current: 155, required: 200, urgent: true },
+  { item: 'Салат', current: 45, required: 50, urgent: false },
+  { item: 'Ломтики сыра', current: 180, required: 200, urgent: false },
 ]
 
 export default function StockLevelWarning() {
   return (
     <Card className="bg-white/5 border-gray-200 backdrop-blur-sm h-full">
       <CardHeader>
-        <CardTitle>Stock Level Warnings</CardTitle>
+        <CardTitle>Предупреждения об уровнях</CardTitle>
       </CardHeader>
       <CardContent>
         <div className="space-y-4">

@@ -37,9 +37,9 @@ export default function DailyOrdersChart({ data }: DailyOrdersChartProps) {
     <Card className="bg-white/5 border-gray-200 backdrop-blur-sm">
       <CardHeader className="flex flex-row items-center justify-between">
         <div>
-          <CardTitle>Daily Orders Timeline</CardTitle>
-          <p className="mt-2 text-sm text-white/60">
-            Overview of order volume trends
+          <CardTitle>График ежедневных заказов</CardTitle>
+          <p className="mt-2 text-sm text-black/60">
+            Обзор тенденций изменения объема заказа
           </p>
         </div>
         <Badge
@@ -51,7 +51,7 @@ export default function DailyOrdersChart({ data }: DailyOrdersChartProps) {
           }`}
         >
           {Number(currentTrend) >= 0 ? '+' : ''}
-          {currentTrend}% trend
+          Изменения на {currentTrend}%
         </Badge>
       </CardHeader>
       <CardContent>
@@ -88,6 +88,7 @@ export default function DailyOrdersChart({ data }: DailyOrdersChartProps) {
                 stroke="#F2CB0A"
                 fill="url(#orderGradient)"
                 strokeWidth={2}
+                name="Заказы"
               />
             </AreaChart>
           </ResponsiveContainer>

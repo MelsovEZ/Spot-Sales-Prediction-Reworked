@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import {
   Table,
@@ -30,9 +30,9 @@ export default function TopItemsPrediction({ data }: TopItemsPredictionProps) {
   const itemsPerPage = 5
 
   const filteredData = data.filter(
-    (item) =>
-      item.Item.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      item.Category.toLowerCase().includes(searchTerm.toLowerCase())
+    (item) => item.Item.toLowerCase().includes(searchTerm.toLowerCase())
+    // Hide Category column, so exclude it from search if desired:
+    // || item.Category.toLowerCase().includes(searchTerm.toLowerCase())
   )
 
   const sortedData = sortColumn
@@ -59,17 +59,21 @@ export default function TopItemsPrediction({ data }: TopItemsPredictionProps) {
     }
   }
 
+  useEffect(() => {
+    setCurrentPage(1)
+  }, [searchTerm, sortColumn, sortDirection])
+
   return (
-    <Card className="bg-white/5 border-gray-200 backdrop-blur-sm min-h-[500px]">
+    <Card className="bg-white/5 border-gray-200 backdrop-blur-sm min-h-[400px]">
       <CardHeader>
-        <CardTitle>Top Items Prediction</CardTitle>
+        <CardTitle>Прогнозирование по позициям</CardTitle>
       </CardHeader>
       <CardContent>
         <Input
-          placeholder="Search items or categories..."
+          placeholder="Поиск..."
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
-          className="mb-4 bg-white/10 border-gray-200 placeholder:text-black/60 cursor-pointer"
+          className="mb-4 bg-white/10 border-gray-200 placeholder:text-black/60"
         />
         <div className="rounded-md border border-gray-200">
           <Table>
@@ -80,10 +84,11 @@ export default function TopItemsPrediction({ data }: TopItemsPredictionProps) {
                   onClick={() => handleSort('Item')}
                 >
                   <div className="flex items-center gap-2">
-                    Item
+                    Название
                     <ArrowDownUp size={15} />
                   </div>
                 </TableHead>
+                {/* Category column hidden
                 <TableHead
                   className="text-black/60 cursor-pointer"
                   onClick={() => handleSort('Category')}
@@ -92,13 +97,13 @@ export default function TopItemsPrediction({ data }: TopItemsPredictionProps) {
                     Category
                     <ArrowDownUp size={15} />
                   </div>
-                </TableHead>
+                </TableHead> */}
                 <TableHead
                   className="text-black/60 cursor-pointer"
                   onClick={() => handleSort('Predicted_Orders')}
                 >
                   <div className="flex items-center gap-2">
-                    Predicted Orders
+                    Прогноз
                     <ArrowDownUp size={15} />
                   </div>
                 </TableHead>
@@ -107,7 +112,7 @@ export default function TopItemsPrediction({ data }: TopItemsPredictionProps) {
                   onClick={() => handleSort('Type_of_Order')}
                 >
                   <div className="flex items-center gap-2">
-                    Type of Order
+                    Тип заказа
                     <ArrowDownUp size={15} />
                   </div>
                 </TableHead>
@@ -117,9 +122,12 @@ export default function TopItemsPrediction({ data }: TopItemsPredictionProps) {
               {currentData.map((item, index) => (
                 <TableRow key={index} className="hover:bg-white/5">
                   <TableCell>{item.Item}</TableCell>
-                  <TableCell>{item.Category}</TableCell>
+                  {/* Category column hidden
+                  <TableCell>{item.Category}</TableCell> */}
                   <TableCell>{item.Predicted_Orders}</TableCell>
-                  <TableCell>{item.Type_of_Order}</TableCell>
+                  <TableCell>
+                    {item.Type_of_Order === 'Dining' ? 'В зале' : 'На вынос'}
+                  </TableCell>
                 </TableRow>
               ))}
             </TableBody>
@@ -131,17 +139,17 @@ export default function TopItemsPrediction({ data }: TopItemsPredictionProps) {
             disabled={currentPage === 1}
             onClick={() => setCurrentPage((p) => p - 1)}
           >
-            Previous
+            Предыдущая
           </button>
           <span>
-            Page {currentPage} of {totalPages}
+            Страница {currentPage} из {totalPages}
           </span>
           <button
             className="px-3 py-1 border border-white/20 rounded hover:bg-white/10"
             disabled={currentPage === totalPages}
             onClick={() => setCurrentPage((p) => p + 1)}
           >
-            Next
+            Следующая
           </button>
         </div>
       </CardContent>

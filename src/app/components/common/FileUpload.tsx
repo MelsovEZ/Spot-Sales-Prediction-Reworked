@@ -69,10 +69,10 @@ export default function FileUpload() {
           disabled={isLoading}
           className="w-[160px] truncate text-white"
         >
-          {file ? file.name : 'Choose File'}
+          {file ? file.name : 'Выбрать Файл'}
         </Button>
         <Button onClick={handleUpload} disabled={!file || isLoading}>
-          {isLoading ? 'Uploading...' : 'Upload'}
+          {isLoading ? 'Загрузка...' : 'Загрузить'}
         </Button>
       </div>
     </>

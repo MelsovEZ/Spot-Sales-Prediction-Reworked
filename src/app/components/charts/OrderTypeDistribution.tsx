@@ -30,7 +30,8 @@ export default function OrderTypeDistribution({
   )
 
   const chartData = Object.entries(orderTypes).map(([name, value]) => ({
-    name,
+    name:
+      name === 'Dining' ? 'В зале' : name === 'Takeaway' ? 'На вынос' : name,
     value,
   }))
 
@@ -39,7 +40,7 @@ export default function OrderTypeDistribution({
   return (
     <Card className="bg-white/5 border-gray-200 backdrop-blur-sm h-full">
       <CardHeader>
-        <CardTitle>Order Type Distribution</CardTitle>
+        <CardTitle>Распределение по типу заказа</CardTitle>
       </CardHeader>
       <CardContent>
         <ResponsiveContainer width="100%" height={300}>
