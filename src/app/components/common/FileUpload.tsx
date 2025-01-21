@@ -67,7 +67,7 @@ export default function FileUpload() {
             )?.click()
           }
           disabled={isLoading}
-          className="w-[160px] truncate"
+          className="w-[160px] truncate text-white"
         >
           {file ? file.name : 'Choose File'}
         </Button>

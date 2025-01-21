@@ -32,10 +32,10 @@ export default function LaborCostAnalysis() {
   )
 
   return (
-    <Card className="bg-white/5 border-white/10 backdrop-blur-sm">
+    <Card className="bg-white/5 border-gray-200 backdrop-blur-sm">
       <CardHeader className="flex flex-row items-center justify-between">
-        <CardTitle className="text-white">Labor Cost Analysis</CardTitle>
-        <Badge variant="outline" className="border-[#A855F7] text-[#A855F7]">
+        <CardTitle>Labor Cost Analysis</CardTitle>
+        <Badge variant="outline" className="border-[#F2CB0A] text-[#F2CB0A]">
           {currentOverstaffing > 0
             ? `${currentOverstaffing} Extra Staff`
             : 'Optimal Staffing'}
@@ -50,13 +50,10 @@ export default function LaborCostAnalysis() {
             />
             <XAxis
               dataKey="hour"
-              stroke="rgba(255,255,255,0.5)"
-              tick={{ fill: 'rgba(255,255,255,0.5)' }}
+              stroke="rgba(0,0,0,1)"
+              tick={{ fill: 'rgba(0,0,0,1)' }}
             />
-            <YAxis
-              stroke="rgba(255,255,255,0.5)"
-              tick={{ fill: 'rgba(255,255,255,0.5)' }}
-            />
+            <YAxis stroke="rgba(0,0,0,1)" tick={{ fill: 'rgba(0,0,0,1)' }} />
             <Tooltip
               contentStyle={{
                 backgroundColor: 'rgba(30,30,46,0.9)',
@@ -65,33 +62,29 @@ export default function LaborCostAnalysis() {
                 color: 'white',
               }}
             />
-            <Legend
-              formatter={(value) => (
-                <span style={{ color: 'white' }}>{value}</span>
-              )}
-            />
+            <Legend formatter={(value) => <span>{value}</span>} />
             <Line
               type="monotone"
               dataKey="actual"
-              stroke="#A855F7"
+              stroke="#F2CB0A"
               strokeWidth={2}
-              dot={{ fill: '#A855F7' }}
+              dot={{ fill: '#F2CB0A' }}
               name="Actual Staff"
             />
             <Line
               type="monotone"
               dataKey="predicted"
-              stroke="#2DD4BF"
+              stroke="#4CAF50"
               strokeWidth={2}
-              dot={{ fill: '#2DD4BF' }}
+              dot={{ fill: '#4CAF50' }}
               name="Predicted Need"
             />
             <Line
               type="monotone"
               dataKey="optimal"
-              stroke="#4B4BF5"
+              stroke="#AD3205"
               strokeWidth={2}
-              dot={{ fill: '#4B4BF5' }}
+              dot={{ fill: '#AD3205' }}
               name="Optimal Staff"
             />
           </LineChart>

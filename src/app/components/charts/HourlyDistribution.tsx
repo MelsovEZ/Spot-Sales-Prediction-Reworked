@@ -22,21 +22,21 @@ interface HourlyDistributionProps {
 
 export default function HourlyDistribution({ data }: HourlyDistributionProps) {
   return (
-    <Card className="bg-white/5 border-white/10 backdrop-blur-sm">
+    <Card className="bg-white/5 border-gray-200 backdrop-blur-sm">
       <CardHeader className="flex flex-row items-center justify-between">
-        <CardTitle className="text-white">Hourly Distribution</CardTitle>
+        <CardTitle>Hourly Distribution</CardTitle>
         <div className="flex items-center space-x-2">
           <Button
             variant="ghost"
             size="icon"
-            className="text-white/60 hover:text-white"
+            className="text-black/60 hover:text-black"
           >
             <ChevronLeft className="h-4 w-4" />
           </Button>
           <Button
             variant="ghost"
             size="icon"
-            className="text-white/60 hover:text-white"
+            className="text-black/60 hover:text-black"
           >
             <ChevronRight className="h-4 w-4" />
           </Button>
@@ -55,14 +55,14 @@ export default function HourlyDistribution({ data }: HourlyDistributionProps) {
             />
             <XAxis
               dataKey="hour"
-              stroke="rgba(255,255,255,0.5)"
-              tick={{ fill: 'rgba(255,255,255,0.5)', fontSize: 12 }}
+              stroke="rgba(0,0,0,1)"
+              tick={{ fill: 'rgba(0,0,0,1)', fontSize: 12 }}
               axisLine={false}
               tickLine={false}
             />
             <YAxis
-              stroke="rgba(255,255,255,0.5)"
-              tick={{ fill: 'rgba(255,255,255,0.5)', fontSize: 12 }}
+              stroke="rgba(0,0,0,1)"
+              tick={{ fill: 'rgba(0,0,0,1)', fontSize: 12 }}
               axisLine={false}
               tickLine={false}
               width={30}
@@ -76,7 +76,7 @@ export default function HourlyDistribution({ data }: HourlyDistributionProps) {
               }}
               cursor={{ fill: 'rgba(255,255,255,0.1)' }}
             />
-            <Bar dataKey="orders" fill="#FF5A5F" radius={[4, 4, 0, 0]} />
+            <Bar dataKey="orders" fill="#4CAF50" radius={[4, 4, 0, 0]} />
           </BarChart>
         </ResponsiveContainer>
       </CardContent>

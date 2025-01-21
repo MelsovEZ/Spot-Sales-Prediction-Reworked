@@ -34,12 +34,12 @@ export default function OrderTypeDistribution({
     value,
   }))
 
-  const COLORS = ['#4B4BF5', '#2DD4BF']
+  const COLORS = ['#F2CB0A', '#4CAF50']
 
   return (
-    <Card className="bg-white/5 border-white/10 backdrop-blur-sm h-full">
+    <Card className="bg-white/5 border-gray-200 backdrop-blur-sm h-full">
       <CardHeader>
-        <CardTitle className="text-white">Order Type Distribution</CardTitle>
+        <CardTitle>Order Type Distribution</CardTitle>
       </CardHeader>
       <CardContent>
         <ResponsiveContainer width="100%" height={300}>
@@ -69,11 +69,7 @@ export default function OrderTypeDistribution({
                 color: 'white',
               }}
             />
-            <Legend
-              formatter={(value) => (
-                <span style={{ color: 'white' }}>{value}</span>
-              )}
-            />
+            <Legend formatter={(value) => <span>{value}</span>} />
           </PieChart>
         </ResponsiveContainer>
       </CardContent>

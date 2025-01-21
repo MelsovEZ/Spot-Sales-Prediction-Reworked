@@ -1,21 +1,19 @@
 'use client'
 
-import { use, useEffect, useState } from 'react'
-import { Card, CardContent } from '@/components/ui/card'
+import { useState } from 'react'
 import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/components/ui/tabs'
 import { Button } from '@/components/ui/button'
-import { ArrowUpIcon, TrendingUpIcon, UsersIcon } from 'lucide-react'
 import DateRangeSelector from './DateRangeSelector'
-import DailyOrdersChart from '../charts/DailyOrdersChart'
-import OrderTypeDistribution from '../charts/OrderTypeDistribution'
-import CategoryAnalysis from '../charts/CategoryAnalysis'
-import TopItemsPrediction from '../charts/TopItemsPrediction'
-import HourlyDistribution from '../charts/HourlyDistribution'
 import OrderHeader from './OrderHeader'
+import CategoryAnalysis from '../charts/CategoryAnalysis'
+import DailyOrdersChart from '../charts/DailyOrdersChart'
+import HourlyDistribution from '../charts/HourlyDistribution'
 import InventoryDemandChart from '../charts/InventoryDemandChart'
 import LaborCostAnalysis from '../charts/LaborCostAnalysis'
+import OrderTypeDistribution from '../charts/OrderTypeDistribution'
 import StaffEfficiencyChart from '../charts/StaffEfficiencyChart'
 import StockLevelWarning from '../charts/StockLevelWarning'
+import TopItemsPrediction from '../charts/TopItemsPrediction'
 import QuickStats from '../charts/QuickStats'
 
 interface PredictionDashboardProps {
@@ -66,6 +64,10 @@ export default function PredictionDashboard({
     { date: '29 January', amount: '4152093 ₸' },
     { date: '30 January', amount: '5034716 ₸' },
     { date: '31 January', amount: '6707382 ₸' },
+    { date: '1 February', amount: '703000 ₸' },
+    { date: '2 February', amount: '3717287 ₸' },
+    { date: '3 February', amount: '4152093 ₸' },
+    { date: '4 February', amount: '5034716 ₸' },
   ]
 
   const fetchPredictions = async () => {
@@ -89,20 +91,20 @@ export default function PredictionDashboard({
   }
 
   return (
-    <div className="min-h-screen bg-[#1E1E2E]">
+    <div className="min-h-screen bg-white text-black">
       {/* Sticky Header */}
-      <div className="sticky top-0 z-10 border-b border-white/10 bg-[#1E1E2E]/80 backdrop-blur-lg">
+      <div className="sticky top-0 z-10 border-b border-gray-200 bg-white shadow-sm">
         <div className="container mx-auto p-4">
           <div className="flex flex-col space-y-4">
             {/* Top Controls */}
-            <div className="flex items-center gap-4 md:justify-end">
+            <div className="flex items-center gap-4 md:justify-start">
               <DateRangeSelector value={dateRange} onChange={setDateRange} />
               <Button
                 onClick={fetchPredictions}
                 disabled={loading}
-                className="bg-[#4B4BF5] hover:bg-[#4B4BF5]/90"
+                className="bg-[#4CAF50] hover:bg-[#45a049]"
               >
-                {loading ? 'Loading...' : 'Refresh'}
+                {loading ? 'Loading' : 'Refresh'}
               </Button>
             </div>
           </div>
@@ -111,26 +113,45 @@ export default function PredictionDashboard({
 
       {predictions && (
         <>
+          {/* Quick Stats */}
           <QuickStats />
+
           {/* Main Content */}
           <div className="container mx-auto p-4">
             {lastUpdated && (
-              <p className="mb-4 text-sm text-white/60">
+              <p className="mb-4 text-sm text-gray-600">
                 Last updated: {lastUpdated.toLocaleString()}
               </p>
             )}
+
             <Tabs defaultValue="overview" className="w-full">
-              <TabsList className="grid w-full grid-cols-3 bg-white/5 mb-6">
-                <TabsTrigger value="overview">Overview</TabsTrigger>
-                <TabsTrigger value="inventory">Inventory</TabsTrigger>
-                <TabsTrigger value="staff">Staff</TabsTrigger>
+              <TabsList className="grid w-full grid-cols-3 bg-gray-100 mb-6">
+                <TabsTrigger
+                  value="overview"
+                  className="data-[state=active]:bg-[#4CAF50] data-[state=active]:text-white"
+                >
+                  Overview
+                </TabsTrigger>
+                <TabsTrigger
+                  value="inventory"
+                  className="data-[state=active]:bg-[#F2CB0A] data-[state=active]:text-white"
+                >
+                  Inventory
+                </TabsTrigger>
+                <TabsTrigger
+                  value="staff"
+                  className="data-[state=active]:bg-[#ff8686] data-[state=active]:text-white"
+                >
+                  Staff
+                </TabsTrigger>
               </TabsList>
+
               <TabsContent value="overview">
                 <div className="grid grid-cols-12 gap-6">
-                  <div className="col-span-12">
+                  <div className="col-span-12 ">
                     <OrderHeader
                       currentDate="18 January"
-                      orderType="Top Item: Burger"
+                      orderType="Top Item: Big Mac"
                       orderDetails="27270208"
                       dineInCode="T058Y050"
                       dailyOrders={dailyOrders}

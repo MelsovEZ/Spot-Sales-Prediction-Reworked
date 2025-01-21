@@ -60,23 +60,23 @@ export default function TopItemsPrediction({ data }: TopItemsPredictionProps) {
   }
 
   return (
-    <Card className="bg-white/5 border-white/10 backdrop-blur-sm min-h-[500px]">
+    <Card className="bg-white/5 border-gray-200 backdrop-blur-sm min-h-[500px]">
       <CardHeader>
-        <CardTitle className="text-white">Top Items Prediction</CardTitle>
+        <CardTitle>Top Items Prediction</CardTitle>
       </CardHeader>
       <CardContent>
         <Input
           placeholder="Search items or categories..."
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
-          className="mb-4 bg-white/10 border-white/10 text-white placeholder:text-white/60 cursor-pointer"
+          className="mb-4 bg-white/10 border-gray-200 placeholder:text-black/60 cursor-pointer"
         />
-        <div className="rounded-md border border-white/10">
+        <div className="rounded-md border border-gray-200">
           <Table>
             <TableHeader>
               <TableRow className="hover:bg-white/5 ">
                 <TableHead
-                  className="text-white/60 cursor-pointer"
+                  className="text-black/60 cursor-pointer"
                   onClick={() => handleSort('Item')}
                 >
                   <div className="flex items-center gap-2">
@@ -85,7 +85,7 @@ export default function TopItemsPrediction({ data }: TopItemsPredictionProps) {
                   </div>
                 </TableHead>
                 <TableHead
-                  className="text-white/60 cursor-pointer"
+                  className="text-black/60 cursor-pointer"
                   onClick={() => handleSort('Category')}
                 >
                   <div className="flex items-center gap-2">
@@ -94,7 +94,7 @@ export default function TopItemsPrediction({ data }: TopItemsPredictionProps) {
                   </div>
                 </TableHead>
                 <TableHead
-                  className="text-white/60 cursor-pointer"
+                  className="text-black/60 cursor-pointer"
                   onClick={() => handleSort('Predicted_Orders')}
                 >
                   <div className="flex items-center gap-2">
@@ -103,7 +103,7 @@ export default function TopItemsPrediction({ data }: TopItemsPredictionProps) {
                   </div>
                 </TableHead>
                 <TableHead
-                  className="text-white/60 cursor-pointer"
+                  className="text-black/60 cursor-pointer"
                   onClick={() => handleSort('Type_of_Order')}
                 >
                   <div className="flex items-center gap-2">
@@ -116,20 +116,16 @@ export default function TopItemsPrediction({ data }: TopItemsPredictionProps) {
             <TableBody>
               {currentData.map((item, index) => (
                 <TableRow key={index} className="hover:bg-white/5">
-                  <TableCell className="text-white">{item.Item}</TableCell>
-                  <TableCell className="text-white">{item.Category}</TableCell>
-                  <TableCell className="text-white">
-                    {item.Predicted_Orders}
-                  </TableCell>
-                  <TableCell className="text-white">
-                    {item.Type_of_Order}
-                  </TableCell>
+                  <TableCell>{item.Item}</TableCell>
+                  <TableCell>{item.Category}</TableCell>
+                  <TableCell>{item.Predicted_Orders}</TableCell>
+                  <TableCell>{item.Type_of_Order}</TableCell>
                 </TableRow>
               ))}
             </TableBody>
           </Table>
         </div>
-        <div className="mt-4 flex items-center justify-between text-white/80">
+        <div className="mt-4 flex items-center justify-between text-black/80">
           <button
             className="px-3 py-1 border border-white/20 rounded hover:bg-white/10"
             disabled={currentPage === 1}

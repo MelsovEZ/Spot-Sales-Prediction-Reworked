@@ -8,7 +8,7 @@ export default function Home() {
   const [selectedArea, setSelectedArea] = useState<string>('')
 
   return (
-    <main className="min-h-screen bg-[#1E1E2E] text-white">
+    <main className="min-h-screen">
       <Header onAreaChange={setSelectedArea} />
       <PredictionDashboard selectedArea={selectedArea} />
       <Toaster />

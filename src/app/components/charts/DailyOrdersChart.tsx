@@ -34,10 +34,10 @@ export default function DailyOrdersChart({ data }: DailyOrdersChartProps) {
       : 0
 
   return (
-    <Card className="bg-white/5 border-white/10 backdrop-blur-sm">
+    <Card className="bg-white/5 border-gray-200 backdrop-blur-sm">
       <CardHeader className="flex flex-row items-center justify-between">
         <div>
-          <CardTitle className="text-white">Daily Orders Timeline</CardTitle>
+          <CardTitle>Daily Orders Timeline</CardTitle>
           <p className="mt-2 text-sm text-white/60">
             Overview of order volume trends
           </p>
@@ -46,8 +46,8 @@ export default function DailyOrdersChart({ data }: DailyOrdersChartProps) {
           variant="outline"
           className={`${
             Number(currentTrend) >= 0
-              ? 'border-[#2DD4BF] text-[#2DD4BF]'
-              : 'border-[#A855F7] text-[#A855F7]'
+              ? 'border-[#4CAF50] text-[#4CAF50]'
+              : 'border-[#F2CB0A] text-[#F2CB0A]'
           }`}
         >
           {Number(currentTrend) >= 0 ? '+' : ''}
@@ -60,8 +60,8 @@ export default function DailyOrdersChart({ data }: DailyOrdersChartProps) {
             <AreaChart data={chartData}>
               <defs>
                 <linearGradient id="orderGradient" x1="0" y1="0" x2="0" y2="1">
-                  <stop offset="0%" stopColor="#A855F7" stopOpacity={0.5} />
-                  <stop offset="100%" stopColor="#A855F7" stopOpacity={0} />
+                  <stop offset="0%" stopColor="#F2CB0A" stopOpacity={0.5} />
+                  <stop offset="100%" stopColor="#F2CB0A" stopOpacity={0} />
                 </linearGradient>
               </defs>
               <CartesianGrid
@@ -70,13 +70,10 @@ export default function DailyOrdersChart({ data }: DailyOrdersChartProps) {
               />
               <XAxis
                 dataKey="date"
-                stroke="rgba(255,255,255,0.5)"
-                tick={{ fill: 'rgba(255,255,255,0.5)' }}
+                stroke="rgba(0,0,0,1)"
+                tick={{ fill: 'rgba(0,0,0,1)' }}
               />
-              <YAxis
-                stroke="rgba(255,255,255,0.5)"
-                tick={{ fill: 'rgba(255,255,255,0.5)' }}
-              />
+              <YAxis stroke="rgba(0,0,0,1)" tick={{ fill: 'rgba(0,0,0,1)' }} />
               <Tooltip
                 contentStyle={{
                   backgroundColor: 'rgba(30,30,46,0.9)',
@@ -88,7 +85,7 @@ export default function DailyOrdersChart({ data }: DailyOrdersChartProps) {
               <Area
                 type="monotone"
                 dataKey="orders"
-                stroke="#A855F7"
+                stroke="#F2CB0A"
                 fill="url(#orderGradient)"
                 strokeWidth={2}
               />

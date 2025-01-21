@@ -21,9 +21,9 @@ const data = [
 
 export default function StaffEfficiencyChart() {
   return (
-    <Card className="bg-white/5 border-white/10 backdrop-blur-sm">
+    <Card className="bg-white/5 border-gray-200 backdrop-blur-sm">
       <CardHeader>
-        <CardTitle className="text-white">Staff Efficiency by Shift</CardTitle>
+        <CardTitle>Staff Efficiency by Shift</CardTitle>
       </CardHeader>
       <CardContent>
         <ResponsiveContainer width="100%" height={300}>
@@ -34,13 +34,10 @@ export default function StaffEfficiencyChart() {
             />
             <XAxis
               dataKey="shift"
-              stroke="rgba(255,255,255,0.5)"
-              tick={{ fill: 'rgba(255,255,255,0.5)' }}
+              stroke="rgba(0,0,0,1)"
+              tick={{ fill: 'rgba(0,0,0,1)' }}
             />
-            <YAxis
-              stroke="rgba(255,255,255,0.5)"
-              tick={{ fill: 'rgba(255,255,255,0.5)' }}
-            />
+            <YAxis stroke="rgba(0,0,0,1)" tick={{ fill: 'rgba(0,0,0,1)' }} />
             <Tooltip
               contentStyle={{
                 backgroundColor: 'rgba(30,30,46,0.9)',
@@ -49,14 +46,10 @@ export default function StaffEfficiencyChart() {
                 color: 'white',
               }}
             />
-            <Legend
-              formatter={(value) => (
-                <span style={{ color: 'white' }}>{value}</span>
-              )}
-            />
-            <Bar dataKey="efficiency" fill="#A855F7" name="Efficiency %" />
-            <Bar dataKey="sales" fill="#2DD4BF" name="Sales ($)" />
-            <Bar dataKey="labor" fill="#4B4BF5" name="Labor Cost ($)" />
+            <Legend formatter={(value) => <span>{value}</span>} />
+            <Bar dataKey="efficiency" fill="#F2CB0A" name="Efficiency %" />
+            <Bar dataKey="sales" fill="#4CAF50" name="Sales ($)" />
+            <Bar dataKey="labor" fill="#AD3205" name="Labor Cost ($)" />
           </BarChart>
         </ResponsiveContainer>
       </CardContent>

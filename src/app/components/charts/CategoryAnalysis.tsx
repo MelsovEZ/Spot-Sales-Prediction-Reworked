@@ -36,9 +36,9 @@ export default function CategoryAnalysis({ data }: CategoryAnalysisProps) {
   const chartData = Object.values(categoryData)
 
   return (
-    <Card className="bg-white/5 border-white/10 backdrop-blur-sm h-full">
+    <Card className="bg-white/5 border-gray-200 backdrop-blur-sm h-full">
       <CardHeader>
-        <CardTitle className="text-white">Category-wise Analysis</CardTitle>
+        <CardTitle>Category-wise Analysis</CardTitle>
       </CardHeader>
       <CardContent>
         <ResponsiveContainer width="100%" height={300}>
@@ -49,13 +49,10 @@ export default function CategoryAnalysis({ data }: CategoryAnalysisProps) {
             />
             <XAxis
               dataKey="Category"
-              stroke="rgba(255,255,255,0.5)"
-              tick={{ fill: 'rgba(255,255,255,0.5)' }}
+              stroke="rgba(0,0,0,1)"
+              tick={{ fill: 'rgba(0,0,0,1)' }}
             />
-            <YAxis
-              stroke="rgba(255,255,255,0.5)"
-              tick={{ fill: 'rgba(255,255,255,0.5)' }}
-            />
+            <YAxis stroke="rgba(0,0,0,1)" tick={{ fill: 'rgba(0,0,0,1)' }} />
             <Tooltip
               contentStyle={{
                 backgroundColor: 'rgba(30,30,46,0.9)',
@@ -64,13 +61,9 @@ export default function CategoryAnalysis({ data }: CategoryAnalysisProps) {
                 color: 'white',
               }}
             />
-            <Legend
-              formatter={(value) => (
-                <span style={{ color: 'white' }}>{value}</span>
-              )}
-            />
-            <Bar dataKey="Takeaway" fill="#A855F7" />
-            <Bar dataKey="Dining" fill="#2DD4BF" />
+            <Legend formatter={(value) => <span>{value}</span>} />
+            <Bar dataKey="Takeaway" fill="#F2CB0A" />
+            <Bar dataKey="Dining" fill="#4CAF50" />
           </BarChart>
         </ResponsiveContainer>
       </CardContent>
