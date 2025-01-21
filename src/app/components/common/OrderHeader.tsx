@@ -37,7 +37,7 @@ export default function OrderHeader({
         <CardContent className="p-4">
           <div className="flex items-start space-x-4">
             <div className="shrink-0">
-              <div className="bg-gradient-to-br from-orange-500 to-red-600 p-3 rounded-xl shadow-lg">
+              <div className="bg-gradient-to-br from-orange-300 to-red-400 p-3 rounded-xl shadow-lg">
                 <Utensils className="h-6 w-6" />
               </div>
             </div>
